@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Youtube Audio Stream API</title>
+    <meta name="description" content="Youtube Audio Stream Server" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="main-doc">
+        <div id="userstories">
+          <div class="title">Youtube Audio Stream API</div>
+          <p>A simple wrapper around <a href="https://github.com/fent/node-ytdl-core#readme" target="_blank">ytdl-core</a> library, for quickly streaming audio from YouTube videos.
+          </p>
+          <ul>
+            <li>
+              <b>POST</b>
+              <code>/api/stream/audio</code>
+              <p class="desc">
+                Make a post request with url in body eg.. 
+                <code>{url: https://www.youtube.com/watch?v=Ouz4JGzXruI }</code> 
+                Returns the following JSON response with the meta data and stream url
+              </p>
+              <p>
+                <pre>
+                    {
+                        "success": true,
+                        "title": "Echos of swing",
+                        "video_id": "Ouz4JGzXruI" 
+                        "url": "https://yt-audio-stream.glitch.me/api/stream/audio/Ouz4JGzXruI"
+                    }
+                </pre>
+              </p>
+            </li>
+            <li>
+              <b>GET</b>
+              <code>/api/stream/audio/{videoId}</code>
+              <p class="desc">
+                Returns an Audio stream. 
+              </p>
+            </li>
+          </ul>
+          <br/>
+          <h4>See it in action: <a href='https://farhankk360.github.io/js-visualize' target="_blank">https://farhankk360.github.io/js-visualize</a></h4>
+        </div>
+        <hr />
+        <div id="testui">
+          <div class="title">Test API Responces:</div>
+
+          <div id="audio-stream-test" class="border">
+            <marquee id="title-scroller" width="60%" direction="left">
+            </marquee>
+              <div class="audio-container">
+                  <div class="loader hide"></div>
+                  <audio
+                    id="audioElement"
+                    controls="true"
+                    controlslist="nodownload"
+                  >
+                </audio>
+              </div>
+
+            <div class="url-input">
+              <label>(POST /api/stream/audio)</label>
+              <input
+                type="text"
+                placeholder="Paste youtube video link here..."
+                id="vid-input-field"
+              />
+              <div id="error-resp"></div>
+
+              <br />
+
+              <button class="button_submit" id="url-submit">
+                Go!
+              </button>
+            </div>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <div class="the-guy">
+        by
+        <a href="https://github.com/farhankk360" target="_blank"
+          >Farhan Ullah</a
+        >
+      </div>
+      <div class="the-guy">
+        Powered by
+        <a href="https://github.com/fent/node-ytdl-core#readme" target="_blank"
+          >ytdl-core</a
+        >
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
